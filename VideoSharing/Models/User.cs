@@ -9,7 +9,7 @@ namespace VideoSharing.Models
         [Required]
         public string? Username { get; set; }
 
-        public Video[]? Bookmarks { get; set; } = [];
+        public ICollection<Video>? Bookmarks { get; set; } = [];
 
     }
 }

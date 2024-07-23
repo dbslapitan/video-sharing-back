@@ -7,6 +7,6 @@
   },
   "AllowedHosts": "*",
   "ConnectionStrings": {
-    "PostgresConnectionString": "Connection String"
+    "PostgresConnectionSting": "Connection String"
   }
 }
