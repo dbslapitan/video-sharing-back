@@ -23,5 +23,8 @@ namespace VideoSharing.Models
         [Required]
         public string? Rating { get; set; }
 
+        [Required]
+        public string? Source { get; set;  }
+
     }
 }

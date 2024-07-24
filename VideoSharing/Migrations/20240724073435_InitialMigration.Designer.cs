@@ -12,8 +12,8 @@ using VideoSharing.Data;
 namespace VideoSharing.Migrations
 {
     [DbContext(typeof(VideoSharingContext))]
-    [Migration("20240724045854_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240724073435_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,6 +73,10 @@ namespace VideoSharing.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Rating")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Source")
                         .IsRequired()
                         .HasColumnType("text");
 
