@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace VideoSharing.Models
 {
@@ -9,6 +10,7 @@ namespace VideoSharing.Models
         [Required]
         public string? Username { get; set; }
 
+        [JsonIgnore]
         public ICollection<Video>? Bookmarks { get; set; }
 
     }
