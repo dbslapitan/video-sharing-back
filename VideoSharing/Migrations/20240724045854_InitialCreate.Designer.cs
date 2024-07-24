@@ -12,8 +12,8 @@ using VideoSharing.Data;
 namespace VideoSharing.Migrations
 {
     [DbContext(typeof(VideoSharingContext))]
-    [Migration("20240723073301_BookmarksICollection2")]
-    partial class BookmarksICollection2
+    [Migration("20240724045854_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,21 @@ namespace VideoSharing.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("VideoSharing.Models.Bookmark", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("VideoId")
+                        .HasColumnType("integer");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("VideoId");
+
+                    b.ToTable("Bookmarks");
+                });
 
             modelBuilder.Entity("VideoSharing.Models.User", b =>
                 {
@@ -76,6 +91,25 @@ namespace VideoSharing.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Videos");
+                });
+
+            modelBuilder.Entity("VideoSharing.Models.Bookmark", b =>
+                {
+                    b.HasOne("VideoSharing.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VideoSharing.Models.Video", "Video")
+                        .WithMany()
+                        .HasForeignKey("VideoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("Video");
                 });
 
             modelBuilder.Entity("VideoSharing.Models.Video", b =>

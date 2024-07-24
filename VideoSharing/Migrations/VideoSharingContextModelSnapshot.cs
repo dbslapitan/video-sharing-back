@@ -22,6 +22,21 @@ namespace VideoSharing.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("VideoSharing.Models.Bookmark", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("VideoId")
+                        .HasColumnType("integer");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("VideoId");
+
+                    b.ToTable("Bookmarks");
+                });
+
             modelBuilder.Entity("VideoSharing.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -73,6 +88,25 @@ namespace VideoSharing.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Videos");
+                });
+
+            modelBuilder.Entity("VideoSharing.Models.Bookmark", b =>
+                {
+                    b.HasOne("VideoSharing.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VideoSharing.Models.Video", "Video")
+                        .WithMany()
+                        .HasForeignKey("VideoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("Video");
                 });
 
             modelBuilder.Entity("VideoSharing.Models.Video", b =>
