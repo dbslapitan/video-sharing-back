@@ -21,5 +21,12 @@ namespace VideoSharing.Controllers
         {
             return _service.GetAll();
         }
+
+        [HttpGet]
+        [Route("Trending")]
+        public IEnumerable<Video> GetTrending()
+        {
+            return _service.GetAll();
+        }
     }
 }
