@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using VideoSharing;
 using VideoSharing.Data;
 using VideoSharing.Services;
 
@@ -14,6 +15,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<VideoSharingContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("PostgresConnectionString")));
 
 builder.Services.AddScoped<PreviewService>();
+
+builder.Services.AddAutoMapper(typeof(DtoProfile));
 
 var app = builder.Build();
 

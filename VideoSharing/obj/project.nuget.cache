@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "b+lX/xMJXFQ=",
+  "dgSpecHash": "8UqAQjJgVzg=",
   "success": true,
   "projectFilePath": "C:\\Users\\DIRK-LAPTOP\\Documents\\Projects\\video-sharing\\video-sharing-back\\VideoSharing\\VideoSharing.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\DIRK-LAPTOP\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\DIRK-LAPTOP\\.nuget\\packages\\entityframework\\6.5.1\\entityframework.6.5.1.nupkg.sha512",
     "C:\\Users\\DIRK-LAPTOP\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\DIRK-LAPTOP\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
