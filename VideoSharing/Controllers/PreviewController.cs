@@ -4,6 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 using VideoSharing.DTOs;
 using VideoSharing.Models;
 using VideoSharing.Services;
+using Amazon.S3;
+using Amazon.S3.Model;
+using System.Data.Entity.Core.Objects;
+using Amazon;
 
 namespace VideoSharing.Controllers
 {
@@ -13,17 +17,36 @@ namespace VideoSharing.Controllers
     {
         PreviewService _service;
         private readonly IMapper _mapper;
+        private readonly IAmazonS3 _s3Client;
 
-        public PreviewController(PreviewService service, IMapper mapper) 
+        public PreviewController(PreviewService service, IMapper mapper, IAmazonS3 s3Client) 
         {
             _service = service;
             _mapper = mapper;
+            _s3Client = s3Client;
         }
 
         [HttpGet]
         public IEnumerable<VideoDetailDto> GetAll()
         {
             var result = _service.GetAll();
+            var signed = string.Empty;
+            try
+            {
+                var request = new GetPreSignedUrlRequest()
+                {
+                    BucketName = "video-sharing-preview",
+                    Key = "112.jpg",
+                    Expires = DateTime.UtcNow.AddHours(2)
+                };
+                string signedUrl = _s3Client.GetPreSignedURL(request);
+                signed = signedUrl;
+            }
+            catch (AmazonS3Exception ex)
+            {
+                Console.WriteLine($"Error:'{ex.Message}'");
+            }
+
             return _mapper.Map<IEnumerable<VideoDetailDto>>(result);
         }
 

@@ -1,3 +1,4 @@
+using Amazon.S3;
 using Microsoft.EntityFrameworkCore;
 using VideoSharing;
 using VideoSharing.Data;
@@ -17,6 +18,8 @@ builder.Services.AddDbContext<VideoSharingContext>(options => options.UseNpgsql(
 builder.Services.AddScoped<PreviewService>();
 
 builder.Services.AddAutoMapper(typeof(DtoProfile));
+
+builder.Services.AddAWSService<IAmazonS3>();
 
 var app = builder.Build();
 

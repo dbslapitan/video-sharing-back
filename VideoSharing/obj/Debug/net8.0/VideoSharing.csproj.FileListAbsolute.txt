@@ -123,3 +123,6 @@ C:\Users\DIRK-LAPTOP\Documents\Projects\video-sharing\video-sharing-back\VideoSh
 C:\Users\DIRK-LAPTOP\Documents\Projects\video-sharing\video-sharing-back\VideoSharing\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\DIRK-LAPTOP\Documents\Projects\video-sharing\video-sharing-back\VideoSharing\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\DIRK-LAPTOP\Documents\Projects\video-sharing\video-sharing-back\VideoSharing\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\DIRK-LAPTOP\Documents\Projects\video-sharing\video-sharing-back\VideoSharing\bin\Debug\net8.0\AWSSDK.Core.dll
+C:\Users\DIRK-LAPTOP\Documents\Projects\video-sharing\video-sharing-back\VideoSharing\bin\Debug\net8.0\AWSSDK.S3.dll
+C:\Users\DIRK-LAPTOP\Documents\Projects\video-sharing\video-sharing-back\VideoSharing\bin\Debug\net8.0\AWSSDK.Extensions.NETCore.Setup.dll
