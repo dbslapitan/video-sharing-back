@@ -1,6 +1,6 @@
 using Amazon.S3;
 using Microsoft.EntityFrameworkCore;
-using VideoSharing;
+using VideoSharing.AutoMapper.Profiles;
 using VideoSharing.Data;
 using VideoSharing.Services;
 

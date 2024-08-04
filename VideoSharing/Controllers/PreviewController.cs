@@ -30,7 +30,6 @@ namespace VideoSharing.Controllers
         public IEnumerable<VideoDetailDto> GetAll()
         {
             var result = _service.GetAll();
-            var signed = string.Empty;
             try
             {
                 var request = new GetPreSignedUrlRequest()
@@ -40,7 +39,6 @@ namespace VideoSharing.Controllers
                     Expires = DateTime.UtcNow.AddHours(2)
                 };
                 string signedUrl = _s3Client.GetPreSignedURL(request);
-                signed = signedUrl;
             }
             catch (AmazonS3Exception ex)
             {
