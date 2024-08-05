@@ -24,7 +24,7 @@ namespace VideoSharing.Models
         public string? Rating { get; set; }
 
         [Required]
-        public string? Source { get; set;  }
+        public string? Filename { get; set; }
 
     }
 }

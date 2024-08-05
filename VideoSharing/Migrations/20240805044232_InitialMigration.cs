@@ -36,7 +36,7 @@ namespace VideoSharing.Migrations
                     Year = table.Column<int>(type: "integer", nullable: true),
                     Category = table.Column<string>(type: "text", nullable: false),
                     Rating = table.Column<string>(type: "text", nullable: false),
-                    Source = table.Column<string>(type: "text", nullable: false)
+                    Filename = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

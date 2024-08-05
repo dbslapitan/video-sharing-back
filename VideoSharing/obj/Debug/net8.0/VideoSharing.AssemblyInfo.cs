@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VideoSharing")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+05db3f59c79970e8e3cf8d5f0a3f04a2674084e4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a3a0367024736d89acc5c180c2a256756177cc85")]
 [assembly: System.Reflection.AssemblyProductAttribute("VideoSharing")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VideoSharing")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

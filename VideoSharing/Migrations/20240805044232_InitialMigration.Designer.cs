@@ -12,7 +12,7 @@ using VideoSharing.Data;
 namespace VideoSharing.Migrations
 {
     [DbContext(typeof(VideoSharingContext))]
-    [Migration("20240724073435_InitialMigration")]
+    [Migration("20240805044232_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -72,11 +72,11 @@ namespace VideoSharing.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<string>("Rating")
+                    b.Property<string>("Filename")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Source")
+                    b.Property<string>("Rating")
                         .IsRequired()
                         .HasColumnType("text");
 

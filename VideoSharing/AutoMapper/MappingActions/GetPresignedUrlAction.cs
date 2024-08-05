@@ -22,7 +22,7 @@ namespace VideoSharing.AutoMapper.MappingActions
                 var request = new GetPreSignedUrlRequest()
                 {
                     BucketName = "video-sharing-preview",
-                    Key = video.Title,
+                    Key = video.Filename,
                     Expires = DateTime.UtcNow.AddHours(2)
                 };
                 videoDetailDto.Source = _amazonS3.GetPreSignedURL(request);

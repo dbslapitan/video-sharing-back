@@ -69,11 +69,11 @@ namespace VideoSharing.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<string>("Rating")
+                    b.Property<string>("Filename")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Source")
+                    b.Property<string>("Rating")
                         .IsRequired()
                         .HasColumnType("text");
 
