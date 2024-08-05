@@ -30,29 +30,16 @@ namespace VideoSharing.Controllers
         public IEnumerable<VideoDetailDto> GetAll()
         {
             var result = _service.GetAll();
-            try
-            {
-                var request = new GetPreSignedUrlRequest()
-                {
-                    BucketName = "video-sharing-preview",
-                    Key = "112.jpg",
-                    Expires = DateTime.UtcNow.AddHours(2)
-                };
-                string signedUrl = _s3Client.GetPreSignedURL(request);
-            }
-            catch (AmazonS3Exception ex)
-            {
-                Console.WriteLine($"Error:'{ex.Message}'");
-            }
 
             return _mapper.Map<IEnumerable<VideoDetailDto>>(result);
         }
 
         [HttpGet]
         [Route("Trending")]
-        public IEnumerable<Video> GetTrending()
+        public IEnumerable<VideoDetailDto> GetTrending()
         {
-            return _service.GetAll();
+            var result = _service.GetTrending();
+            return _mapper.Map<IEnumerable<VideoDetailDto>>(result);
         }
     }
 }

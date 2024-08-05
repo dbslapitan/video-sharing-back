@@ -21,5 +21,11 @@ namespace VideoSharing.Services
         {
             return _context.Videos.Include(p => p.User).ToList();
         }
+
+        public IEnumerable<Video> GetTrending() 
+        {
+            int[] trending = [0, 1, 2 ,3 ,4];
+            return _context.Videos.Where(video => trending.Contains(video.Id)).Include(video => video.User);
+        }
     }
 }
