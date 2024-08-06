@@ -32,5 +32,10 @@ namespace VideoSharing.Services
         {
             return _context.Videos.Where(video => !trending.Contains(video.Id)).Include(video => video.User).ToList();
         }
+
+        public IEnumerable<Bookmark> GetBookmarks(int id)
+        {
+            return _context.Bookmarks.Where(bookmark => bookmark.UserId == id).ToList();
+        }
     }
 }

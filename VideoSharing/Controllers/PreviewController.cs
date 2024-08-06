@@ -49,5 +49,13 @@ namespace VideoSharing.Controllers
             var result = _service.GetRecommendations();
             return _mapper.Map<IEnumerable<VideoDetailDto>>(result);
         }
+
+        [HttpGet]
+        [Route("Bookmarks/{id}")]
+        public IEnumerable<Bookmark> GetBookmarks(int id)
+        {
+            var result = _service.GetBookmarks(id);
+            return result;
+        }
     }
 }
