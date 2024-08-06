@@ -8,6 +8,7 @@ namespace VideoSharing.Services
 {
     public class PreviewService
     {
+        private readonly int[] trending = [0, 1, 2, 3, 4];
         private readonly VideoSharingContext _context;
         private readonly IMapper _mapper;
 
@@ -24,8 +25,12 @@ namespace VideoSharing.Services
 
         public IEnumerable<Video> GetTrending() 
         {
-            int[] trending = [0, 1, 2 ,3 ,4];
-            return _context.Videos.Where(video => trending.Contains(video.Id)).Include(video => video.User);
+            return _context.Videos.Where(video => trending.Contains(video.Id)).Include(video => video.User).ToList();
+        }
+
+        public IEnumerable<Video> GetRecommendations()
+        {
+            return _context.Videos.Where(video => !trending.Contains(video.Id)).Include(video => video.User).ToList();
         }
     }
 }

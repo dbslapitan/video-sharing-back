@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using VideoSharing.Data;
@@ -11,9 +12,11 @@ using VideoSharing.Data;
 namespace VideoSharing.Migrations
 {
     [DbContext(typeof(VideoSharingContext))]
-    partial class VideoSharingContextModelSnapshot : ModelSnapshot
+    [Migration("20240806073020_IncludeBookmark")]
+    partial class IncludeBookmark
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

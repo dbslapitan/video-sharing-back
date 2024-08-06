@@ -41,5 +41,13 @@ namespace VideoSharing.Controllers
             var result = _service.GetTrending();
             return _mapper.Map<IEnumerable<VideoDetailDto>>(result);
         }
+
+        [HttpGet]
+        [Route("Recommendations")]
+        public IEnumerable<VideoDetailDto> GetRecommendations()
+        {
+            var result = _service.GetRecommendations();
+            return _mapper.Map<IEnumerable<VideoDetailDto>>(result);
+        }
     }
 }
