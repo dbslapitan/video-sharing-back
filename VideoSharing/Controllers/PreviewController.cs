@@ -52,10 +52,10 @@ namespace VideoSharing.Controllers
 
         [HttpGet]
         [Route("Bookmarks/{id}")]
-        public IEnumerable<BookmarkMinDto> GetBookmarks(int id)
+        public IEnumerable<int> GetBookmarks(int id)
         {
             var result = _service.GetBookmarks(id);
-            return _mapper.Map<IEnumerable<BookmarkMinDto>>(result);
+            return result;
         }
     }
 }
