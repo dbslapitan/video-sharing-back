@@ -13,6 +13,8 @@ namespace VideoSharing.AutoMapper.Profiles
                 .ForMember(dto => dto.Source, opt => opt.Ignore())
                 .ForMember(dto => dto.Username, opt => opt.MapFrom(video => video.User!.Username))
                 .AfterMap<GetPresignedUrlAction>();
+
+            CreateMap<Bookmark, BookmarkMinDto>();
         }
     }
 }
