@@ -25,29 +25,32 @@ namespace VideoSharing.Services
 
         public async Task<IEnumerable<Video>> GetTrendingAsync() 
         {
-            return await _context.Videos.Where(video => trending.Contains(video.Id)).Include(video => video.User).ToListAsync();
+            return await _context.Videos.Where(video => trending.Contains(video.Id)).AsNoTracking().Include(video => video.User).ToListAsync();
         }
 
         public async Task<IEnumerable<Video>> GetRecommendationsAsync()
         {
-            return await _context.Videos.Where(video => !trending.Contains(video.Id)).Include(video => video.User).ToListAsync();
+            return await _context.Videos.Where(video => !trending.Contains(video.Id)).AsNoTracking().Include(video => video.User).ToListAsync();
         }
 
         public async  Task<IEnumerable<int>> GetBookmarksAsync(int id)
         {
-            return await _context.Bookmarks.Where(bookmark => bookmark.UserId == id).Select(bookmark => bookmark.VideoId).ToListAsync();
+            return await _context.Bookmarks.Where(bookmark => bookmark.UserId == id).AsNoTracking().Select(bookmark => bookmark.VideoId).ToListAsync();
         }
 
-        public async Task<Boolean> AddBookmarkAsync(BookmarkMinDto bookmark)
+        public async Task ChangeBookmarkAsync(BookmarkMinDto bookmark)
         {
             var checkBookmark = await _context.Bookmarks.Where(db => db.UserId == bookmark.UserId && db.VideoId == bookmark.VideoId).FirstOrDefaultAsync();
             if (checkBookmark is null)
             {
-                _context.Bookmarks.Update(_mapper.Map<BookmarkMinDto, Bookmark>(bookmark));
-                var changes = await _context.SaveChangesAsync();
-                return true;
+                _context.Bookmarks.Add(_mapper.Map<BookmarkMinDto, Bookmark>(bookmark));
             }
-            return false;
+            else
+            {
+                _context.Bookmarks.Remove(checkBookmark);
+            }
+
+            await _context.SaveChangesAsync();
         }
     }
 }

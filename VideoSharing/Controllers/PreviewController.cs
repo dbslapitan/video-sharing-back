@@ -52,11 +52,11 @@ namespace VideoSharing.Controllers
         }
 
         [HttpPost]
-        [Route("Bookmarks")]
-        public async Task<ActionResult<Boolean>> PostBookmark(BookmarkMinDto bookmark)
+        [Route("Bookmark")]
+        public async Task<IActionResult> PostBookmark(BookmarkMinDto bookmark)
         {
-            bool isSaved = await _service.AddBookmarkAsync(bookmark);
-            return isSaved ? Created() : Ok();
+            await _service.ChangeBookmarkAsync(bookmark);
+            return Ok();
         }
     }
 }
