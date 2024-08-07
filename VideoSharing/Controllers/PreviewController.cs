@@ -29,10 +29,10 @@ namespace VideoSharing.Controllers
 
         [HttpGet]
         [Route("Trending")]
-        public IEnumerable<VideoDetailDto> GetTrending()
+        public async Task<ActionResult<IEnumerable<VideoDetailDto>>> GetTrending()
         {
-            var result = _service.GetTrending();
-            return _mapper.Map<IEnumerable<VideoDetailDto>>(result);
+            var result = await _service.GetTrendingAsync();
+            return Ok(_mapper.Map<IEnumerable<VideoDetailDto>>(result));
         }
 
         [HttpGet]
