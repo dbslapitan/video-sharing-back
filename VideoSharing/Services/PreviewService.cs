@@ -33,9 +33,9 @@ namespace VideoSharing.Services
             return await _context.Videos.Where(video => !trending.Contains(video.Id)).Include(video => video.User).ToListAsync();
         }
 
-        public IEnumerable<int> GetBookmarks(int id)
+        public async  Task<IEnumerable<int>> GetBookmarksAsync(int id)
         {
-            return _context.Bookmarks.Where(bookmark => bookmark.UserId == id).Select(bookmark => bookmark.VideoId).ToList();
+            return await _context.Bookmarks.Where(bookmark => bookmark.UserId == id).Select(bookmark => bookmark.VideoId).ToListAsync();
         }
 
         public void AddBookmark(Bookmark bookmark)

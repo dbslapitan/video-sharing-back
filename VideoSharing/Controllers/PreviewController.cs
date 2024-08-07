@@ -45,10 +45,10 @@ namespace VideoSharing.Controllers
 
         [HttpGet]
         [Route("Bookmarks/{id}")]
-        public IEnumerable<int> GetBookmarks(int id)
+        public async Task<ActionResult<IEnumerable<int>>> GetBookmarks(int id)
         {
-            var result = _service.GetBookmarks(id);
-            return result;
+            var result = await _service.GetBookmarksAsync(id);
+            return Ok(result);
         }
 
         [HttpPost]
