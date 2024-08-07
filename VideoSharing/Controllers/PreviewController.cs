@@ -37,10 +37,10 @@ namespace VideoSharing.Controllers
 
         [HttpGet]
         [Route("Recommendations")]
-        public IEnumerable<VideoDetailDto> GetRecommendations()
+        public async Task<ActionResult<IEnumerable<VideoDetailDto>>> GetRecommendations()
         {
-            var result = _service.GetRecommendations();
-            return _mapper.Map<IEnumerable<VideoDetailDto>>(result);
+            var result = await _service.GetRecommendationsAsync();
+            return Ok(_mapper.Map<IEnumerable<VideoDetailDto>>(result));
         }
 
         [HttpGet]

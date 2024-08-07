@@ -28,9 +28,9 @@ namespace VideoSharing.Services
             return await _context.Videos.Where(video => trending.Contains(video.Id)).Include(video => video.User).ToListAsync();
         }
 
-        public IEnumerable<Video> GetRecommendations()
+        public async Task<IEnumerable<Video>> GetRecommendationsAsync()
         {
-            return _context.Videos.Where(video => !trending.Contains(video.Id)).Include(video => video.User).ToList();
+            return await _context.Videos.Where(video => !trending.Contains(video.Id)).Include(video => video.User).ToListAsync();
         }
 
         public IEnumerable<int> GetBookmarks(int id)
