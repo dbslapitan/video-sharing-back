@@ -18,9 +18,9 @@ namespace VideoSharing.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<Video> GetAll()
+        public async Task<IEnumerable<Video>> GetAllAsync()
         {
-            return _context.Videos.Include(p => p.User).ToList();
+            return await _context.Videos.Include(p => p.User).ToListAsync();
         }
 
         public IEnumerable<Video> GetTrending() 
@@ -36,6 +36,15 @@ namespace VideoSharing.Services
         public IEnumerable<int> GetBookmarks(int id)
         {
             return _context.Bookmarks.Where(bookmark => bookmark.UserId == id).Select(bookmark => bookmark.VideoId).ToList();
+        }
+
+        public void AddBookmark(Bookmark bookmark)
+        {
+            var checkBookmark = _context.Bookmarks.Where(db => db.UserId == bookmark.UserId && db.VideoId == bookmark.VideoId).FirstOrDefault();
+            if (checkBookmark is null)
+            {
+                _context.Bookmarks.Add(bookmark);
+            }
         }
     }
 }
