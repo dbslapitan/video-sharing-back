@@ -11,10 +11,5 @@ namespace VideoSharing.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Video> Videos { get; set; }
         public DbSet<Bookmark> Bookmarks { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Bookmark>().HasNoKey();
-        }
     }
 }

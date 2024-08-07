@@ -38,13 +38,16 @@ namespace VideoSharing.Services
             return await _context.Bookmarks.Where(bookmark => bookmark.UserId == id).Select(bookmark => bookmark.VideoId).ToListAsync();
         }
 
-        public void AddBookmark(Bookmark bookmark)
+        public async Task<Boolean> AddBookmarkAsync(BookmarkMinDto bookmark)
         {
-            var checkBookmark = _context.Bookmarks.Where(db => db.UserId == bookmark.UserId && db.VideoId == bookmark.VideoId).FirstOrDefault();
+            var checkBookmark = await _context.Bookmarks.Where(db => db.UserId == bookmark.UserId && db.VideoId == bookmark.VideoId).FirstOrDefaultAsync();
             if (checkBookmark is null)
             {
-                _context.Bookmarks.Add(bookmark);
+                _context.Bookmarks.Update(_mapper.Map<BookmarkMinDto, Bookmark>(bookmark));
+                var changes = await _context.SaveChangesAsync();
+                return true;
             }
+            return false;
         }
     }
 }

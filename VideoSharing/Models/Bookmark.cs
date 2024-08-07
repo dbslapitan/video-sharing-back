@@ -4,6 +4,9 @@ namespace VideoSharing.Models
 {
     public class Bookmark
     {
+
+        public int Id { get; set; }
+
         [Required]
         public int UserId { get; set; }
 

@@ -53,10 +53,10 @@ namespace VideoSharing.Controllers
 
         [HttpPost]
         [Route("Bookmarks")]
-        public IActionResult PostBookmark(Bookmark bookmark)
+        public async Task<ActionResult<Boolean>> PostBookmark(BookmarkMinDto bookmark)
         {
-            _service.AddBookmark(bookmark);
-            return Created();
+            bool isSaved = await _service.AddBookmarkAsync(bookmark);
+            return isSaved ? Created() : Ok();
         }
     }
 }

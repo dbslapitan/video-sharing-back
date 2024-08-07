@@ -29,6 +29,7 @@ namespace VideoSharing.AutoMapper.MappingActions
             }
             catch (AmazonS3Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 videoDetailDto.Source = string.Empty;
             }
         }
